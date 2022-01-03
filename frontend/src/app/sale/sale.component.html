@@ -1,0 +1,46 @@
+<p>Tree {{tree.id}}: The {{tree.type}} has a heigt of {{tree.heightMeters}}m and costs {{tree.price}}€.</p>
+<p>Please enter your personal data</p>
+
+<form [formGroup]="myForm">
+    <p>Name</p>
+    <mat-form-field >
+        <mat-label>Firstname:</mat-label>
+        <input matInput formControlName="firstname" type="text" placeholder="Type firstname">
+        <mat-error *ngIf="myForm.controls['firstname'].invalid">
+            Enter your Firstname. Minimum 2 letters
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Lastname:</mat-label>
+        <input matInput formControlName="lastname" type="text" placeholder="Type lastname">
+        <mat-error *ngIf="myForm.controls['lastname'].invalid">
+            Enter your Lastname. Minimum 2 letters
+        </mat-error>
+    </mat-form-field>
+
+    <p>Addresse</p>
+    <mat-form-field>
+        <mat-label>Street:</mat-label>
+        <input matInput formControlName="street" type="text" placeholder="Type streetname and number">
+      <mat-error *ngIf="myForm.controls['street'].invalid">
+            Street is required. Minimum 10 letters
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>PLZ:</mat-label>
+        <input matInput formControlName="plz" minlength="4" type="text" placeholder="Type plz">
+        <mat-error *ngIf="myForm.controls['plz'].invalid">
+            PLZ is required and contains a minimum 4 numbers
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Location: (Optional</mat-label>
+        <input matInput formControlName="location" type="text" placeholder="Optional">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="!myForm.valid" (click)="submitForm()">Buy</button>
+    <div></div>
+</form>

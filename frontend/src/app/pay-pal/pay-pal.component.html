@@ -1,0 +1,44 @@
+<p>The {{tree.type}} has a price of {{tree.price}}€.</p>
+<p>Please enter your payment information</p>
+
+<form [formGroup]="myForm">
+  <p>Card info</p>
+  <mat-form-field>
+    <mat-label>Cardnumber:</mat-label>
+    <input matInput formControlName="cardnumber" type="text" placeholder="Type cardnumber">
+    <mat-error *ngIf="myForm.controls['cardnumber'].invalid">
+      Please enter a valid cardnumber. It contains 14 numbers
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>CVC:</mat-label>
+    <input matInput formControlName="cvc" type="text" placeholder="099">
+    <mat-error *ngIf="myForm.controls['cvc'].invalid">
+      Enter your CVC. It contains 3 numbers
+    </mat-error>
+  </mat-form-field>
+
+  <p>Duedate:</p>
+
+  <mat-form-field id="date1">
+    <mat-label>Year:</mat-label>
+    <input matInput formControlName="duedatej" type="text" placeholder="JJJJ">
+    <mat-error *ngIf="myForm.controls['duedatej'].invalid">
+      Enter a year. It contains 4 numbers
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field id="date">
+    <mat-label>Month:</mat-label>
+    <input matInput formControlName="duedatem" type="text" placeholder="MM">
+    <mat-error *ngIf="myForm.controls['duedatem'].invalid">
+      Enter a month. It contains 2 numbers
+    </mat-error>
+  </mat-form-field>
+
+  <br>
+
+  <button mat-raised-button color="primary" type="submit" [disabled]="!myForm.valid" (click)="submitForm()">Buy</button>
+  <div></div>
+</form>
